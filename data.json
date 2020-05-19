@@ -1,0 +1,13 @@
+{
+  "instructors": [
+    {
+      "id": 1,
+      "avatar_url": "http://google.com",
+      "name": "Luan",
+      "birth": 742435200000,
+      "gender": "M",
+      "services": "Musculação",
+      "created_at": 1589846822591
+    }
+  ]
+}
