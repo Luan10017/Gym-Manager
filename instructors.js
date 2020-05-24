@@ -15,7 +15,8 @@ exports.show = function(req, res) {
         ...foundInstructor,
         age: age(foundInstructor.birth),
         services: foundInstructor.services.split(','),
-        created_at: "",
+        created_at: new Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at),
+        //Não sei porque está carregando a data em um formato errado. No site MDN carrega certo no simulador
     }
 
     return res.render('instructors/show', {instructor})
