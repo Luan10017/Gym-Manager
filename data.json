@@ -17,6 +17,24 @@
       "gender": "F",
       "services": "Funcional",
       "created_at": 1590339956283
+    },
+    {
+      "id": 3,
+      "avatar_url": "https://source.unsplash.com/collection/3465564/900x900",
+      "name": "Luan Andrade",
+      "birth": 742435200000,
+      "gender": "M",
+      "services": "Musculação, Natação",
+      "created_at": 1590348023449
+    },
+    {
+      "id": 4,
+      "avatar_url": "https://source.unsplash.com/collection/3465564/900x900",
+      "name": "Carolina ",
+      "birth": 482371200000,
+      "gender": "F",
+      "services": "Natação",
+      "created_at": 1590351448420
     }
   ]
 }
