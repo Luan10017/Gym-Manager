@@ -211,3 +211,18 @@ td, th {
 tbody tr:last-child td {
     border-bottom: none;
 }
+
+tbody tr td:first-child {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+}
+
+
+
+tbody tr td:first-child span {
+    width: 48px;
+    height: 48px;
+    background-position: center;
+    background-size: cover;
+}
