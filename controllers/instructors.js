@@ -1,6 +1,6 @@
 const fs = require('fs')
-const data = require('./data.json')
-const { age, date } = require('./utils')
+const data = require('../data.json')
+const { age, date } = require('../utils')
 const Intl = require('intl')
 
 exports.index = function(req, res) {
@@ -28,6 +28,12 @@ exports.show = function(req, res) {
 }
 
 // create
+
+exports.create = function(res,req) {
+    return res.render('instructors/create')
+}
+
+// POST
 exports.post = function(req, res) {
     const keys = Object.keys(req.body)
     for (key of keys) {
