@@ -4,14 +4,14 @@ const { age, date } = require('../utils')
 const Intl = require('intl')
 
 exports.index = function(req, res) {
-    return res.render('memberss/index', {memberss: data.memberss})
+    return res.render('members/index', {members: data.members})
 }
 
 //show
 exports.show = function(req, res) {
     const { id } = req.params
 
-    const foundMembers = data.memberss.find(function(members){
+    const foundMembers = data.members.find(function(members){
         return members.id == id
     })
     if (!foundMembers) return res.send('Members not found')
@@ -21,7 +21,7 @@ exports.show = function(req, res) {
         age: age(foundMembers.birth),
     }
 
-    return res.render('memberss/show', {members})
+    return res.render('members/show', {members})
 }
 
 /* CREAT */
@@ -43,9 +43,9 @@ exports.post = function(req, res) {
 
     birth = Date.parse(birth)
     const created_at = Date.now()
-    const id = Number(data.memberss.length + 1)
+    const id = Number(data.members.length + 1)
 
-    data.memberss.push({
+    data.members.push({
         id,
         avatar_url,
         name,
@@ -58,7 +58,7 @@ exports.post = function(req, res) {
     fs.writeFile("data.json", JSON.stringify(data,null,2), function(err){
         if (err) return res.send("Write file error!")
     
-        return res.redirect("/memberss")
+        return res.redirect("/members")
     })
 
 
@@ -69,7 +69,7 @@ exports.post = function(req, res) {
 exports.edit =function(req, res) {
     const { id } = req.params
 
-    const foundMembers = data.memberss.find(function(members){
+    const foundMembers = data.members.find(function(members){
         return members.id == id
     })
     if (!foundMembers) return res.send('Members not found')
@@ -81,7 +81,7 @@ exports.edit =function(req, res) {
     }
 
 
-    return res.render('memberss/edit', { members})
+    return res.render('members/edit', { members})
 }
 
 //update
@@ -91,7 +91,7 @@ exports.put = function(req, res) {
     const { id } = req.body
     let index = 0
 
-    const foundMembers = data.memberss.find(function(members, foundIndex){
+    const foundMembers = data.members.find(function(members, foundIndex){
         if (id == members.id){
             index = foundIndex
             return true
@@ -106,12 +106,12 @@ exports.put = function(req, res) {
         id: Number(req.body.id)
     }
 
-    data.memberss[index] = members
+    data.members[index] = members
 
     fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err) {
         if (err) return res.send('write error!')
 
-        return res.redirect(`memberss/${id}`)
+        return res.redirect(`members/${id}`)
     })
 }
 
@@ -119,15 +119,15 @@ exports.put = function(req, res) {
 
 exports.delete = function(req, res) {
     const { id } = req.body
-    const filteredMemberss = data.memberss.filter(function(members) {
+    const filteredMemberss = data.members.filter(function(members) {
         return members.id != id
     })
 
-    data.memberss = filteredMemberss
+    data.members = filteredMemberss
 
     fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err) {
         if (err) return res.send('Write file error')
 
-        return res.redirect("/memberss")
+        return res.redirect("/members")
     })
 }
