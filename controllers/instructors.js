@@ -29,7 +29,7 @@ exports.show = function(req, res) {
 
 // create
 
-exports.create = function(res,req) {
+exports.create = function(req, res) {
     return res.render('instructors/create')
 }
 
