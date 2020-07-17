@@ -7,29 +7,11 @@ exports.index = function(req, res) {
     return res.render('members/index', {members: data.members})
 }
 
-//show
-exports.show = function(req, res) {
-    const { id } = req.params
-
-    const foundMembers = data.members.find(function(members){
-        return members.id == id
-    })
-    if (!foundMembers) return res.send('Members not found')
-
-    const members = {
-        ...foundMembers,
-        age: age(foundMembers.birth),
-    }
-
-    return res.render('members/show', {members})
-}
 
 /* CREAT */
 exports.create = function(req, res) {
     return res.render('members/create')
 }
-
-
 
 // POST
 exports.post = function(req, res) {
@@ -63,6 +45,23 @@ exports.post = function(req, res) {
 
 
     //return res.send(req.body)
+}
+
+//show
+exports.show = function(req, res) {
+    const { id } = req.params
+
+    const foundMember = data.members.find(function(members){
+        return members.id == id
+    })
+    if (!foundMember) return res.send('Members not found')
+
+    const member = {
+        ...foundMember,
+        age: age(foundMember.birth),
+    }
+
+    return res.render('members/show', {member})
 }
 
 //edit
