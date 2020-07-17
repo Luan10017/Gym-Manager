@@ -7,26 +7,6 @@ exports.index = function(req, res) {
     return res.render('instructors/index', {instructors: data.instructors})
 }
 
-//show
-exports.show = function(req, res) {
-    const { id } = req.params
-
-    const foundInstructor = data.instructors.find(function(instructor){
-        return instructor.id == id
-    })
-    if (!foundInstructor) return res.send('Instructor not found')
-
-    const instructor = {
-        ...foundInstructor,
-        age: age(foundInstructor.birth),
-        services: foundInstructor.services.split(','),
-        created_at: new Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at),
-        //Não sei porque está carregando a data em um formato errado. No site MDN carrega certo no simulador
-    }
-
-    return res.render('instructors/show', {instructor})
-}
-
 // create
 
 exports.create = function(req, res) {
@@ -67,6 +47,27 @@ exports.post = function(req, res) {
     //return res.send(req.body)
 }
 
+//show
+exports.show = function(req, res) {
+    const { id } = req.params
+
+    const foundInstructor = data.instructors.find(function(instructor){
+        return instructor.id == id
+    })
+    if (!foundInstructor) return res.send('Instructor not found')
+
+    const instructor = {
+        ...foundInstructor,
+        age: age(foundInstructor.birth),
+        services: foundInstructor.services.split(','),
+        created_at: new Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at),
+        //Não sei porque está carregando a data em um formato errado. No site MDN carrega certo no simulador
+    }
+
+    return res.render('instructors/show', {instructor})
+}
+
+
 //edit
 exports.edit =function(req, res) {
     const { id } = req.params
@@ -78,7 +79,7 @@ exports.edit =function(req, res) {
     
     const instructor = {
         ...foundInstructor,
-        birth: date(foundInstructor.birth)
+        birth: date(foundInstructor.birth).iso
     
     }
 
