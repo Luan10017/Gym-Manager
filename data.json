@@ -10,6 +10,17 @@
       "weight": "72",
       "height": "175",
       "id": 1
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://images.unsplash.com/photo-1526401485004-46910ecc8e51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+      "name": "Mariana Rosa",
+      "email": "mari.mari@gmail.com",
+      "birth": 647913600000,
+      "gender": "F",
+      "blood": "B+",
+      "weight": "50",
+      "height": "150"
     }
   ],
   "instructors": [
